@@ -1,0 +1,12 @@
+{
+  "name": "delta",
+  "ignore": [
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.5.0",
+    "angular-messages": "~1.4.8",
+    "angular-ui-grid": "~3.0.7"
+  }
+}

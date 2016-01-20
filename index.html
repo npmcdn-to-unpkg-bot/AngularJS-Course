@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/angular-toastr-master/dist/angular-toastr.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-toastr-master/dist/angular-toastr.tpls.min.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+
+    <script src="app/js/delta-config.js"></script>
+    <script src="app/js/controllers/index-controller.js"></script>
+    <script src="app/arquitetura/alert-service.js"></script>
+    <meta charset="UTF-8">
+    <title>My First Application</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="indexController" class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Cadastro de Pessoas</div>
+                <div class="panel-body">
+                    <form class="form-group" name="formPessoa">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" ng-model="entidade.nome" name="name"
+                                            required ng-minlength="4" ng-maxlength="10"/>
+                                </div>
+
+                                <div ng-messages="formPessoa.name.$error" ng-if="formPessoa.name.$invalid && formPessoa.name.$touched">
+                                    <div ng-messages-include="app/templates/validations.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Sobrenome</label>
+                                    <input type="text" class="form-control" ng-model="entidade.sobrenome" required name="sobrenome"/>
+                                </div>
+
+                                <div ng-messages="formPessoa.sobrenome.$error" ng-if="formPessoa.sobrenome.$invalid && formPessoa.sobrenome.$touched">
+                                    <div ng-messages-include="app/templates/validations.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Data de nascimento</label>
+                                    <input type="date" class="form-control" ng-model="entidade.nascimento" name="nascimento" required/>
+                                </div>
+
+                                <div ng-messages="formPessoa.nascimento.$error" ng-if="formPessoa.nascimento.$invalid && formPessoa.nascimento.$touched">
+                                    <div ng-messages-include="app/templates/validations.html"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div ui-grid="gridOptions" style="height: 200px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-success" ng-click="salvar();">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-default" ng-click="clear();">
+                    <i class="fa fa-eraser"></i>
+                    Limpar
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
